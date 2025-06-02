@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --icon-size-multiplier: 1;
+  }
+
+  /* Apply icon size to Lucide icons */
+  svg[data-lucide] {
+    width: calc(1em * var(--icon-size-multiplier));
+    height: calc(1em * var(--icon-size-multiplier));
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Disable text selection globally to prevent interference with press-and-hold */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Re-enable text selection for input fields and editable content */
+  input,
+  textarea,
+  [contenteditable="true"],
+  .selectable-text {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+}
+
+/* Accessibility Classes */
+.text-small {
+  font-size: 0.75rem !important;
+}
+
+.text-large {
+  font-size: 1.125rem !important;
+}
+
+.text-extra-large {
+  font-size: 1.25rem !important;
+}
+
+.high-contrast {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --border: 0 0% 20%;
+}
+
+.dark.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 0%;
+  --card-foreground: 0 0% 100%;
+  --border: 0 0% 80%;
+}
+
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.simple-view .hidden-simple {
+  display: none !important;
+}
+
+/* Emergency Mode Styles */
+.emergency-mode {
+  --background: 0 100% 97%;
+  --foreground: 0 100% 30%;
+  --card: 0 100% 97%;
+  --card-foreground: 0 100% 30%;
+  --border: 0 100% 80%;
+}
+
+.dark.emergency-mode {
+  --background: 0 100% 10%;
+  --foreground: 0 100% 80%;
+  --card: 0 100% 15%;
+  --card-foreground: 0 100% 80%;
+  --border: 0 100% 40%;
+}
+
+/* Markdown Styles */
+.prose {
+  max-width: none;
+}
+
+.prose h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.prose h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.prose h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.prose p {
+  margin-bottom: 0.5rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+}
+
+.prose li {
+  margin-bottom: 0.25rem;
+}
+
+/* Text-to-Speech Global Styles */
+.tts-holding {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  outline: 2px solid rgba(59, 130, 246, 0.3) !important;
+  outline-offset: 2px !important;
+  transition: all 0.2s ease !important;
+}
+
+.tts-reading {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+  outline: 2px solid rgba(34, 197, 94, 0.5) !important;
+  outline-offset: 2px !important;
+  animation: tts-pulse 1.5s infinite !important;
+}
+
+@keyframes tts-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.tts-enabled {
+  cursor: pointer;
+  position: relative;
+}
+
+.tts-enabled:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* High contrast mode adjustments */
+.high-contrast .tts-holding {
+  background-color: rgba(255, 255, 0, 0.3) !important;
+  outline: 3px solid #000 !important;
+}
+
+.high-contrast .tts-reading {
+  background-color: rgba(0, 255, 0, 0.3) !important;
+  outline: 3px solid #000 !important;
+}
+
+/* Reduce motion adjustments */
+.reduce-motion .tts-reading {
+  animation: none !important;
+}
+
+/* Mobile touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  .tts-enabled:hover {
+    background-color: transparent;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.tts-enabled:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.8) !important;
+  outline-offset: 2px !important;
+}
+
+/* Prevent text selection during press and hold */
+.tts-holding {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}

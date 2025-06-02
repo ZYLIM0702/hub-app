@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![HUB Logo](public/images/hub-logo.png)
+![HUB Logo](public/images/android-chrome-192x192.png)
 
 **Empowering Communities Through Technology in Times of Crisis**
 

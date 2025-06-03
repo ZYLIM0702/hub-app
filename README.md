@@ -1,18 +1,12 @@
-# 🆘 HUB - Humanitarian Unified Backbone
+# HUB - Humanitarian Unified Backbone
 
 <div align="center">
 
 ![HUB Logo](public/images/android-chrome-192x192.png)
 
 **Empowering Communities Through Technology in Times of Crisis**
-
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--3.5-412991?style=for-the-badge&logo=openai)](https://openai.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
-
-[🚀 Live Demo](https://your-hub-app.vercel.app) • [📖 Documentation](#documentation) • [🤝 Contributing](#contributing) • [🆘 Support](#support)
+<p align="center"> </p> <p align="center"> <a href="https://github.com/ZYLIM0702/c3-dashboard/issues"> <img src="https://img.shields.io/github/issues/ZYLIM0702/c3-dashboard" alt="Open Issues" /> </a> <a href="https://github.com/ZYLIM0702/c3-dashboard/stargazers"> <img src="https://img.shields.io/github/stars/ZYLIM0702/c3-dashboard?style=social" alt="GitHub Stars" /> </a> <a href="LICENSE"> <img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT" /> </a> </p>
+<p align="center"> <img src="https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white" alt="Next.js" /> <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white" alt="React" /> <img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" alt="Flutter" /> <img src="https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white" alt="Supabase" /> <img src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI" /> <img src="https://img.shields.io/badge/Apache_Kafka-000000?logo=apachekafka&logoColor=white" alt="Apache Kafka" /> <img src="https://img.shields.io/badge/Apache_Flink-0082A9?logo=apacheflink&logoColor=white" alt="Apache Flink" /> <img src="https://img.shields.io/badge/MLflow-0052EE?logo=mlflow&logoColor=white" alt="MLflow" /> <img src="https://img.shields.io/badge/KServe-3F51B5?logo=kubernetes&logoColor=white" alt="KServe" /> <img src="https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus&logoColor=white" alt="Prometheus" /> <img src="https://img.shields.io/badge/Grafana-F46800?logo=grafana&logoColor=white" alt="Grafana" /> <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" alt="Docker" /> <img src="https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=white" alt="Kubernetes" /> <img src="https://img.shields.io/badge/LoRaWAN-FF6600?logo=lorawan&logoColor=white" alt="LoRaWAN" /> </p>
 
 </div>
 
@@ -94,7 +88,7 @@ Built with cutting-edge technology and powered by **C3 (Command, Control, and Co
 
 1. **Clone the repository**
    \`\`\`bash
-   git clone https://github.com/your-org/hub-app.git
+   git clone https://github.com/ZYLIM0702/hub-app.git
    cd hub-app
    \`\`\`
 
@@ -133,7 +127,7 @@ Built with cutting-edge technology and powered by **C3 (Command, Control, and Co
 
 Deploy instantly to Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-org/hub-app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ZYLIM0702/hub-app)
 
 Or build manually:
 \`\`\`bash
@@ -294,13 +288,13 @@ We welcome contributions from developers, emergency management professionals, an
 ## 🆘 Support
 
 ### **Emergency Support**
-If you're in immediate danger, **call your local emergency services** (911 in the US, 112 in Europe, etc.) immediately.
+If you're in immediate danger, **call your local emergency services** (999 in the MY, 112 in Europe, etc.) immediately.
 
 ### **Technical Support**
 - 📧 **Email**: support@hub-emergency.org
 - 💬 **Discord**: [Join our community](https://discord.gg/hub-emergency)
 - 📖 **Documentation**: [docs.hub-emergency.org](https://docs.hub-emergency.org)
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/your-org/hub-app/issues)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ZYLIM0702/hub-app/issues)
 
 ### **Community Resources**
 - 🎓 **Training Materials**: Emergency response guides and tutorials
@@ -326,7 +320,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Built with ❤️ for humanity's resilience**
 
-[🌐 Website](https://hub-emergency.org) • [📧 Contact](mailto:info@hub-emergency.org) • [🐦 Twitter](https://twitter.com/hub_emergency)
+[🌐 Website](https://hub-emergency.org) • [📧 Email](mailto:info@hub-emergency.org)
 
 *"In times of crisis, technology becomes a bridge to safety, hope, and recovery."*
 

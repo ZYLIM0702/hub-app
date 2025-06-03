@@ -71,7 +71,13 @@ type DeviceType = {
   }>
 }
 
-export function DeviceDetails({ deviceId }: { deviceId: string }) {
+export function DeviceDetails({ 
+  deviceId,
+  onDeviceLoad
+}: { 
+  deviceId: string,
+  onDeviceLoad?: (device: DeviceType) => void 
+}) {
   const router = useRouter()
   const [device, setDevice] = useState<DeviceType | null>(null)
   const [activeTab, setActiveTab] = useState("overview")
@@ -90,19 +96,27 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
       // Enhance the device with additional mock data based on device type
       const enhancedDevice = enhanceDeviceWithMockData(foundDevice)
       setDevice(enhancedDevice)
+      onDeviceLoad?.(enhancedDevice)
     } else {
       // If device not found, create a mock device for demo
       const mockDevice = createMockDevice(deviceId)
       setDevice(mockDevice)
+      onDeviceLoad?.(mockDevice)
     }
   }, [deviceId])
 
   const enhanceDeviceWithMockData = (baseDevice: DeviceType): DeviceType => {
-    // Add type-specific mock data based on device type
-    switch (baseDevice.type) {
+    // Normalize type for all possible values
+    let normalizedType = baseDevice.type
+    if (["ground-node", "marine-node", "module"].includes(baseDevice.type)) {
+      if (baseDevice.type === "module") normalizedType = "lora"
+      else normalizedType = "sensor"
+    }
+    switch (normalizedType) {
       case "lora":
         return {
           ...baseDevice,
+          type: "lora",
           firmware: "v3.1.2",
           location: {
             latitude: 3.139,
@@ -175,6 +189,7 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
       case "helmet":
         return {
           ...baseDevice,
+          type: "helmet",
           firmware: "v2.0.5",
           location: {
             latitude: 3.142,
@@ -257,6 +272,7 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
       case "drone":
         return {
           ...baseDevice,
+          type: "drone",
           firmware: "v4.2.1",
           location: {
             latitude: 3.135,
@@ -331,6 +347,7 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
       case "wearable":
         return {
           ...baseDevice,
+          type: "wearable",
           firmware: "v1.8.3",
           location: {
             latitude: 3.141,
@@ -399,9 +416,10 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
             },
           ],
         }
-      default: // Ground Node or sensor
+      default:
         return {
           ...baseDevice,
+          type: "sensor",
           firmware: "v2.3.1",
           location: {
             latitude: 3.139,
@@ -519,14 +537,24 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
               : "sensor"
     }
 
+    // Get name from localStorage if available
+    let deviceName = undefined;
+    if (cachedConnected) {
+      const devices = JSON.parse(cachedConnected);
+      const device = devices.find((d: any) => d.id === id);
+      if (device) {
+        deviceName = device.name;
+      }
+    }
+
     const baseDevice = {
       id,
-      name: `${
+      name: deviceName || `${
         deviceType === "lora"
           ? "Portable Lora Node"
           : deviceType === "helmet"
             ? "Smart Emergency Helmet"
-            : deviceType === "drone"
+            : deviceType === "module"
               ? "Drone Modular Payload System"
               : deviceType === "wearable"
                 ? "Smart Watch"
@@ -538,7 +566,7 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
           ? Radio
           : deviceType === "helmet"
             ? Shield // Changed from HardHat to Shield
-            : deviceType === "drone"
+            : deviceType === "module"
               ? Zap
               : deviceType === "wearable"
                 ? Watch
@@ -640,21 +668,17 @@ export function DeviceDetails({ deviceId }: { deviceId: string }) {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center space-x-2">
-        <Button variant="ghost" size="icon" onClick={() => router.back()}>
-          <ChevronLeft className="h-5 w-5" />
-        </Button>
-        <div>
-          <h1 className="text-xl font-bold">{device.name}</h1>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">{device.name}</CardTitle>
           <div className="flex items-center space-x-2">
             <Badge variant="outline" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
               {device.status === "connected" ? "Active" : device.status}
             </Badge>
             <span className="text-sm text-gray-600 dark:text-gray-400">ID: {device.id.substring(0, 8)}</span>
           </div>
-        </div>
-      </div>
+        </CardHeader>
+      </Card>
 
       {/* Export Button */}
       <Button variant="outline" className="w-full flex items-center justify-center">

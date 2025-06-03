@@ -60,27 +60,34 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
 
   const predefinedAmounts = ["10", "25", "50", "100", "250", "500"]
 
+  // Helper to format as Malaysian Ringgit
+  const formatCurrency = (amount: string | number) => {
+    const num = typeof amount === "string" ? parseFloat(amount) : amount
+    if (isNaN(num)) return "RM0"
+    return `RM${num.toLocaleString("en-MY", { minimumFractionDigits: 0 })}`
+  }
+
   const paymentMethods: PaymentMethod[] = [
     {
       id: "card",
       type: "card",
       name: "Credit/Debit Card",
       icon: CreditCard,
-      details: "Visa, Mastercard, American Express",
+      details: "Visa, Mastercard, American Express (Malaysia supported)",
     },
     {
       id: "mobile",
       type: "mobile",
-      name: "Mobile Payment",
+      name: "DuitNow/FPX/E-Wallet",
       icon: Smartphone,
-      details: "Apple Pay, Google Pay, Samsung Pay",
+      details: "Touch 'n Go, GrabPay, Boost, DuitNow, FPX",
     },
     {
       id: "bank",
       type: "bank",
       name: "Bank Transfer",
       icon: Building,
-      details: "Direct bank transfer",
+      details: "Direct bank transfer (Maybank, CIMB, RHB, etc.)",
     },
   ]
 
@@ -89,13 +96,13 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
     const campaigns = [
       {
         id: "camp-001",
-        title: "Emergency Shelter Supplies",
+        title: "Flood Relief for Kelantan",
         description:
-          "Help provide tents, blankets, and basic necessities for families displaced by the recent earthquake.",
-        organizer: "Disaster Relief Coalition",
-        raised: 15750,
-        goal: 25000,
-        donors: 342,
+          "Help provide emergency shelter, food, and supplies to families affected by the recent floods in Kelantan.",
+        organizer: "Malaysian Red Crescent Society",
+        raised: 45750,
+        goal: 80000,
+        donors: 542,
         daysLeft: 5,
         category: "Shelter",
         isUrgent: true,
@@ -103,13 +110,13 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
       },
       {
         id: "camp-002",
-        title: "Medical Aid for Flood Victims",
+        title: "Medical Aid for Sabah Villages",
         description:
-          "Support medical teams providing emergency care to those affected by flooding in the eastern region.",
-        organizer: "Medical Response Team",
-        raised: 8920,
-        goal: 12000,
-        donors: 178,
+          "Support mobile clinics delivering urgent medical care to rural communities in Sabah.",
+        organizer: "Mercy Malaysia",
+        raised: 23920,
+        goal: 40000,
+        donors: 278,
         daysLeft: 3,
         category: "Medical",
         isUrgent: true,
@@ -189,7 +196,7 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
                     className="h-12"
                     onClick={() => handleAmountSelect(amount)}
                   >
-                    ${amount}
+                    {formatCurrency(amount)}
                   </Button>
                 ))}
               </div>
@@ -201,7 +208,7 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
                 Custom Amount
               </Label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
+                <span className="absolute left-3 top-3 h-4 w-4 text-gray-500 font-bold">RM</span>
                 <Input
                   id="custom-amount"
                   type="number"
@@ -316,7 +323,7 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
               <CardContent className="p-4 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600 dark:text-gray-400">Donation Amount</span>
-                  <span className="font-bold text-lg">${getCurrentAmount()}</span>
+                  <span className="font-bold text-lg">{formatCurrency(getCurrentAmount())}</span>
                 </div>
 
                 {isRecurring && (
@@ -342,7 +349,7 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
 
                 <div className="flex items-center justify-between text-lg font-bold">
                   <span>Total</span>
-                  <span>${getCurrentAmount()}</span>
+                  <span>{formatCurrency(getCurrentAmount())}</span>
                 </div>
               </CardContent>
             </Card>
@@ -373,7 +380,7 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
             <div>
               <h2 className="text-2xl font-bold mb-2">Thank You!</h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Your donation of ${getCurrentAmount()} has been successfully processed
+                Your donation of {formatCurrency(getCurrentAmount())} has been successfully processed
               </p>
             </div>
 
@@ -456,7 +463,7 @@ export function DonatePage({ campaignId }: { campaignId: string }) {
               <div className="flex items-center space-x-4 mt-2 text-xs text-gray-600 dark:text-gray-400">
                 <div className="flex items-center space-x-1">
                   <DollarSign className="h-3 w-3" />
-                  <span>${campaign.raised.toLocaleString()} raised</span>
+                  <span>{formatCurrency(campaign.raised)} raised</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Users className="h-3 w-3" />

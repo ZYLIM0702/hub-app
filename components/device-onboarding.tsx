@@ -60,7 +60,7 @@ const [connectedDevices, setConnectedDevices] = useState<DeviceType[]>([
   {
     id: "dev-001",
     name: "Ground Node",
-    type: "sensor",
+    type: "sensor", // changed from "ground-node"
     icon: Smartphone,
     status: "connected",
     battery: 92,
@@ -70,7 +70,7 @@ const [connectedDevices, setConnectedDevices] = useState<DeviceType[]>([
   {
     id: "dev-002",
     name: "Marine Buoy Node",
-    type: "sensor",
+    type: "sensor", // changed from "marine-node"
     icon: Radio,
     status: "connected",
     battery: 78,
@@ -110,7 +110,7 @@ const [connectedDevices, setConnectedDevices] = useState<DeviceType[]>([
   {
     id: "dev-006",
     name: "Portable LoRa Module",
-    type: "module",
+    type: "lora", // changed from "module"
     icon: Speaker,
     status: "connected",
     battery: 80,

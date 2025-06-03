@@ -31,13 +31,13 @@ export function CrowdfundingPage() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([
     {
       id: "camp-001",
-      title: "Emergency Shelter Supplies",
+      title: "Flood Relief for Kelantan",
       description:
-        "Help provide tents, blankets, and basic necessities for families displaced by the recent earthquake.",
-      organizer: "Disaster Relief Coalition",
-      raised: 15750,
-      goal: 25000,
-      donors: 342,
+        "Help provide emergency shelter, food, and supplies to families affected by the recent floods in Kelantan.",
+      organizer: "Malaysian Red Crescent Society",
+      raised: 45750,
+      goal: 80000,
+      donors: 542,
       daysLeft: 5,
       category: "Shelter",
       isUrgent: true,
@@ -45,13 +45,13 @@ export function CrowdfundingPage() {
     },
     {
       id: "camp-002",
-      title: "Medical Aid for Flood Victims",
+      title: "Medical Aid for Sabah Villages",
       description:
-        "Support medical teams providing emergency care to those affected by flooding in the eastern region.",
-      organizer: "Medical Response Team",
-      raised: 8920,
-      goal: 12000,
-      donors: 178,
+        "Support mobile clinics delivering urgent medical care to rural communities in Sabah.",
+      organizer: "Mercy Malaysia",
+      raised: 23920,
+      goal: 40000,
+      donors: 278,
       daysLeft: 3,
       category: "Medical",
       isUrgent: true,
@@ -59,36 +59,36 @@ export function CrowdfundingPage() {
     },
     {
       id: "camp-003",
-      title: "Clean Water Initiative",
-      description: "Help restore clean water access to communities affected by infrastructure damage.",
-      organizer: "Water Relief Network",
-      raised: 5340,
-      goal: 10000,
-      donors: 112,
+      title: "Clean Water for Orang Asli",
+      description: "Help install water filtration systems for Orang Asli villages in Pahang.",
+      organizer: "Water For Malaysia",
+      raised: 13400,
+      goal: 25000,
+      donors: 212,
       daysLeft: 7,
       category: "Water",
       isVerified: true,
     },
     {
       id: "camp-004",
-      title: "School Rebuilding Project",
-      description: "Support the reconstruction of schools damaged during the recent natural disaster.",
-      organizer: "Education First Foundation",
-      raised: 23400,
-      goal: 50000,
-      donors: 267,
+      title: "School Rebuilding in Penang",
+      description: "Support the reconstruction of schools damaged by landslides in Penang.",
+      organizer: "Education For All Malaysia",
+      raised: 38400,
+      goal: 100000,
+      donors: 367,
       daysLeft: 14,
       category: "Education",
       isVerified: true,
     },
     {
       id: "camp-005",
-      title: "Emergency Communications Network",
-      description: "Help deploy emergency communication equipment to restore connectivity in affected areas.",
-      organizer: "Tech Response Team",
-      raised: 12800,
-      goal: 15000,
-      donors: 203,
+      title: "Emergency Communications for Sarawak",
+      description: "Help deploy emergency communication equipment to restore connectivity in Sarawak's rural areas.",
+      organizer: "Tech Relief Malaysia",
+      raised: 22800,
+      goal: 30000,
+      donors: 303,
       daysLeft: 2,
       category: "Technology",
       isUrgent: true,
@@ -108,6 +108,8 @@ export function CrowdfundingPage() {
     if (percentage >= 50) return "bg-blue-600"
     return "bg-orange-600"
   }
+
+  const formatCurrency = (amount: number) => `RM${amount.toLocaleString("en-MY", { minimumFractionDigits: 0 })}`
 
   return (
     <div className="space-y-6">
@@ -184,8 +186,8 @@ export function CrowdfundingPage() {
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="font-medium">${campaign.raised.toLocaleString()}</span>
-                  <span className="text-gray-600 dark:text-gray-400">of ${campaign.goal.toLocaleString()}</span>
+                  <span className="font-medium">{formatCurrency(campaign.raised)}</span>
+                  <span className="text-gray-600 dark:text-gray-400">of {formatCurrency(campaign.goal)}</span>
                 </div>
                 <Progress
                   value={(campaign.raised / campaign.goal) * 100}

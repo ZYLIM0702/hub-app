@@ -50,6 +50,7 @@ export function NewsPage() {
       category: "alert",
       isOfficial: true,
       isUrgent: true,
+      image: "https://preview.redd.it/history-of-south-east-asia-earthquakes-from-1-jan-1975-to-v0-hcj5ba8d4ure1.jpeg?width=1080&crop=smart&auto=webp&s=5ea9ffe65e7812d27dd990de7fc11edf13ae7784",
     },
     {
       id: "news-002",
@@ -61,6 +62,7 @@ export function NewsPage() {
       location: "Downtown Area",
       category: "update",
       isOfficial: true,
+      image: "https://cdnuploads.aa.com.tr/uploads/Contents/2018/10/14/thumbs_b_c_cce1c2d80109c62b236b6df70ea59d3a.jpg?v=121044",
     },
     {
       id: "news-003",
@@ -72,6 +74,7 @@ export function NewsPage() {
       location: "River District",
       category: "update",
       isOfficial: true,
+      image: "https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2025/05/20/2d8a70eb-4955-47c4-a004-6aea7e17845f_02917f7f.jpg",
     },
     {
       id: "news-004",
@@ -83,6 +86,7 @@ export function NewsPage() {
       time: "3 hours ago",
       location: "North Park",
       category: "community",
+      image: "https://img.freepik.com/premium-photo/volunteer-group-distributing-food-supplies-community_1286780-3605.jpg",
     },
     {
       id: "news-005",
@@ -94,6 +98,7 @@ export function NewsPage() {
       location: "Multiple Areas",
       category: "update",
       isOfficial: true,
+      image: "https://cdn.entergynewsroom.com/userfiles/ZetaNR110120.jpg",
     },
   ])
 

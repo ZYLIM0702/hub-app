@@ -19,7 +19,7 @@ const defaultSettings: AccessibilitySettings = {
   simpleView: false,
   highContrast: false,
   reduceMotion: false,
-  textToSpeech: true,
+  textToSpeech: false, // Set TTS default to disabled
 }
 
 export function useAccessibility() {

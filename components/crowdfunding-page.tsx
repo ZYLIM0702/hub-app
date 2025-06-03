@@ -42,6 +42,7 @@ export function CrowdfundingPage() {
       category: "Shelter",
       isUrgent: true,
       isVerified: true,
+      image: "https://www.theborneopost.com/newsimages/2022/09/malaysian-family-cheap-sale.jpg",
     },
     {
       id: "camp-002",
@@ -56,6 +57,7 @@ export function CrowdfundingPage() {
       category: "Medical",
       isUrgent: true,
       isVerified: true,
+      image: "https://codeblue.galencentre.org/wp-content/uploads/2020/09/Sarawak-FDS-compressed_WHO.jpg",
     },
     {
       id: "camp-003",
@@ -68,6 +70,7 @@ export function CrowdfundingPage() {
       daysLeft: 7,
       category: "Water",
       isVerified: true,
+      image: "https://static.wixstatic.com/media/3031f2_20f28ca8d6874542821336c31c3cec46~mv2.webp/v1/fill/w_700,h_525,al_c/3031f2_20f28ca8d6874542821336c31c3cec46~mv2.webp",
     },
     {
       id: "camp-004",
@@ -80,6 +83,7 @@ export function CrowdfundingPage() {
       daysLeft: 14,
       category: "Education",
       isVerified: true,
+      image: "https://www.wfp.org/sites/default/files/styles/gallery_embed_big/public/2021-11/211115_Ecole_Lahatte_haute%20def_Franckyle%20Augustin_2.jpg?itok=lPHDag2R",
     },
     {
       id: "camp-005",
@@ -92,6 +96,7 @@ export function CrowdfundingPage() {
       daysLeft: 2,
       category: "Technology",
       isUrgent: true,
+      image: "https://www.sarawaktribune.com/wp-content/uploads/2022/03/KCH-khirudin-comm-2503-alv-2.jpeg",
     },
   ])
 

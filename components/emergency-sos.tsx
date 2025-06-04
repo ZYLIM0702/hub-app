@@ -299,31 +299,36 @@ export function EmergencySOS() {
         <CardContent className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600 dark:text-gray-400 tts-enabled">Name:</span>
-            <span className="font-medium tts-enabled">Ahmad bin Abdullah</span>
+            <span className="font-medium tts-enabled">John Lee</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600 dark:text-gray-400 tts-enabled">IC Number:</span>
-            <span className="font-medium tts-enabled">850515-14-5512</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400 tts-enabled">Role:</span>
+            <span className="font-medium tts-enabled">Volunteer</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600 dark:text-gray-400 tts-enabled">Emergency Contact:</span>
-            <span className="font-medium tts-enabled">+60 12-345 6789</span>
+            <span className="font-medium tts-enabled">Sarah Lee (+60 11-987 6543)</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600 dark:text-gray-400 tts-enabled">Medical Info:</span>
-            <Badge variant="secondary" className="tts-enabled" data-tts-text="Medical condition: Type 1 Diabetes">
-              Type 1 Diabetes
-            </Badge>
+            <div className="flex gap-2">
+              <Badge variant="secondary" className="tts-enabled" data-tts-text="Medical condition: Type 2 Diabetes">
+                Type 2 Diabetes
+              </Badge>
+              <Badge variant="secondary" className="tts-enabled" data-tts-text="Medical condition: Allergic to Seafood">
+                Allergic to Seafood
+              </Badge>
+            </div>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600 dark:text-gray-400 tts-enabled">Blood Type:</span>
-            <Badge variant="secondary" className="tts-enabled" data-tts-text="Blood Type: A+">
-              A+
+            <Badge variant="secondary" className="tts-enabled" data-tts-text="Blood Type: B+">
+              B+
             </Badge>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600 dark:text-gray-400 tts-enabled">Current Location:</span>
-            <span className="font-medium text-blue-600 dark:text-blue-400 tts-enabled">Sharing...</span>
+            <span className="font-medium text-blue-600 dark:text-blue-400 tts-enabled">Bangsar, Kuala Lumpur</span>
           </div>
         </CardContent>
       </Card>

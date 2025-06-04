@@ -5,10 +5,12 @@ import type React from "react"
 import { createContext, useContext, useEffect } from "react"
 import { usePressHoldSpeech } from "@/hooks/use-press-hold-speech"
 import { useAccessibility } from "@/hooks/use-accessibility"
+import { useLanguage } from "@/components/theme-provider"
 
 interface TextToSpeechContextType {
   isEnabled: boolean
   stopSpeaking: () => void
+  speakText: (text: string) => void
 }
 
 const TextToSpeechContext = createContext<TextToSpeechContextType | undefined>(undefined)
@@ -33,6 +35,15 @@ export function TextToSpeechProvider({ children }: TextToSpeechProviderProps) {
       "[data-tts], p, h1, h2, h3, h4, h5, h6, span, div, button, label, .tts-enabled, .card-title, .card-description, .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl, .text-sm, .font-semibold, .font-bold, .font-medium, a",
     excludeSelectors: ["input", "textarea", ".tts-disabled", "[data-tts-disabled]", "pre", "code", ".selectable-text"],
   })
+  const { language } = useLanguage()
+
+  const speakText = (text: string) => {
+    if (isEnabled) {
+      const utterance = new SpeechSynthesisUtterance(text)
+      utterance.lang = language === "zh" ? "zh-CN" : language === "ms" ? "ms-MY" : "en-US"
+      window.speechSynthesis.speak(utterance)
+    }
+  }
 
   // Add global styles for visual feedback
   useEffect(() => {
@@ -110,5 +121,5 @@ export function TextToSpeechProvider({ children }: TextToSpeechProviderProps) {
     }
   }, [settings.textToSpeech, isEnabled])
 
-  return <TextToSpeechContext.Provider value={{ isEnabled, stopSpeaking }}>{children}</TextToSpeechContext.Provider>
+  return <TextToSpeechContext.Provider value={{ isEnabled, stopSpeaking, speakText }}>{children}</TextToSpeechContext.Provider>
 }

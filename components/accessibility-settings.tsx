@@ -10,10 +10,12 @@ import { useAccessibilityContext } from "@/hooks/use-accessibility-provider"
 import { useTextToSpeech } from "@/hooks/use-text-to-speech"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
+import { useLanguage } from "@/components/theme-provider"
 
 export function AccessibilitySettings() {
   const { settings, updateSettings, speakText } = useAccessibilityContext()
   const { testSpeech, speechSupported, voicesCount } = useTextToSpeech()
+  const { language, setLanguage } = useLanguage()
   const router = useRouter()
 
   const textSizeOptions = [
@@ -49,8 +51,14 @@ export function AccessibilitySettings() {
     }
   }
 
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang)
+    speakText(`Language changed to ${lang === 'en' ? 'English' : lang === 'zh' ? 'Chinese' : 'Malay'}`)
+  }
+
   return (
     <div className="space-y-6">
+      {/* Accessibility Settings */}
       <div>
         <h1 className="text-2xl font-bold mb-2 tts-enabled">Accessibility Settings</h1>
         <p className="text-gray-600 dark:text-gray-400 tts-enabled">
@@ -91,6 +99,36 @@ export function AccessibilitySettings() {
                   {option.demo}
                 </span>
                 <span className="text-xs">{option.label}</span>
+              </Button>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Language Settings */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2 tts-enabled">
+            <Smartphone className="h-5 w-5" />
+            <span>Language Settings</span>
+          </CardTitle>
+          <CardDescription className="tts-enabled">Select your preferred language</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { value: "en", label: "English" },
+              { value: "zh", label: "Chinese" },
+              { value: "ms", label: "Malay" },
+            ].map((option) => (
+              <Button
+                key={option.value}
+                variant={language === option.value ? "default" : "outline"}
+                className="h-16 flex flex-col items-center justify-center space-y-1 tts-enabled"
+                onClick={() => handleLanguageChange(option.value)}
+                data-tts-text={`${option.label} language`}
+              >
+                <span className="text-sm font-bold">{option.label}</span>
               </Button>
             ))}
           </div>

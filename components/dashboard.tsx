@@ -1,18 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AlertTriangle, MapPin, Shield, Smartphone, Bot, Newspaper, Battery, Wifi, WifiOff, Bell } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
+import { useTranslate } from "@/hooks/use-translate"
+import { useLanguage } from "@/components/theme-provider"
+import { LucideProps } from "lucide-react"
+import { PWAInstallPrompt } from "@/components/pwa-install-prompt"
+
+interface QuickAction {
+  name: string
+  href: string
+  icon: React.ComponentType<LucideProps>
+  color: string
+  urgent?: boolean
+}
 
 export function Dashboard() {
+  const { language } = useLanguage()
+  const { translateText } = useTranslate()
   const [isOnline, setIsOnline] = useState(true)
   const [batteryLevel, setBatteryLevel] = useState(85)
+  const [translatedActions, setTranslatedActions] = useState<QuickAction[]>([])
 
-  const quickActions = [
+  const quickActions: QuickAction[] = [
     { name: "Emergency SOS", href: "/emergency", icon: Shield, color: "bg-red-600 hover:bg-red-700", urgent: true },
     { name: "Find Shelter", href: "/shelters", icon: MapPin, color: "bg-blue-600 hover:bg-blue-700" },
     { name: "AI Assistant", href: "/assistant", icon: Bot, color: "bg-green-600 hover:bg-green-700" },
@@ -24,6 +39,20 @@ export function Dashboard() {
     { id: 2, type: "Landslide Alert", severity: "Medium", time: "15 min ago", location: "Cameron Highlands" },
     { id: 3, type: "Shelter Update", severity: "Low", time: "1 hour ago", location: "SMK Damansara Jaya" },
   ]
+
+  useEffect(() => {
+    const translateActions = async () => {
+      const translations = await Promise.all(
+        quickActions.map(async (action) => ({
+          ...action,
+          name: await translateText(action.name, language),
+        }))
+      )
+      setTranslatedActions(translations)
+    }
+
+    translateActions()
+  }, [language, translateText])
 
   return (
     <div className="space-y-6">
@@ -49,6 +78,9 @@ export function Dashboard() {
         </CardContent>
       </Card>
 
+      {/* PWA Install Prompt */}
+      <PWAInstallPrompt />
+
       {/* Emergency Alert */}
       <Alert className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950">
         <AlertTriangle className="h-4 w-4 text-red-600" />
@@ -61,7 +93,7 @@ export function Dashboard() {
       <div>
         <h2 className="text-lg font-semibold mb-4 tts-enabled">Quick Actions</h2>
         <div className="grid grid-cols-2 gap-3">
-          {quickActions.map((action) => {
+          {translatedActions.map((action) => {
             const Icon = action.icon
             return (
               <Link key={action.name} href={action.href}>
@@ -162,21 +194,25 @@ export function Dashboard() {
         </CardContent>
       </Card>
 
-      {/* Instructions for Text-to-Speech */}
-      <Card className="bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
-        <CardContent className="p-4">
-          <div className="flex items-start space-x-2">
-            <Bot className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
-            <div>
-              <p className="text-sm font-medium text-blue-800 dark:text-blue-200 tts-enabled">Text-to-Speech Active</p>
-              <p className="text-xs text-blue-600 dark:text-blue-300 mt-1 tts-enabled">
-                Press and hold any text for 800ms to hear it spoken. Use Ctrl+Space for keyboard access, or Escape to
-                stop.
-              </p>
-            </div>
+      {/* Community Updates */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg tts-enabled">App Installation</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2">
+                <p className="text-sm font-medium">Install HUB to your device for quick access.</p>
+        <Button  className="mt-2 w-full" >
+          Install HUB
+        </Button>
+
           </div>
         </CardContent>
       </Card>
+
+    
+
+      {/* End of Dashboard */}
     </div>
   )
 }
